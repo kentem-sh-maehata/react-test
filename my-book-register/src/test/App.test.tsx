@@ -25,18 +25,18 @@ describe('本のテーブル', () => {
   test('書籍が登録できており、利用可能になっている', async () => {
     expect(screen.getByText('利用可能')).toBeInTheDocument();
   });
-  test('貸し出しボタンを押すと利用状況が切り替わる', async () => {
+  test('貸出ボタンを押すと利用状況が貸出中に切り替わる', async () => {
     await user.click(screen.getByRole('button', { name: '貸出' }));
     expect(screen.getByText('貸出中'));
-  });
-  test('同じ本を登録することができない', async () => {
-    const bookList = screen.getAllByText('1週間でC#の基礎が学べる本');
-    expect(bookList.length).toBe(1);
   });
   test('返却ボタンを押すと利用状況が利用可能に切り替わる', async () => {
     await user.click(screen.getByRole('button', { name: '貸出' }));
     await user.click(screen.getByRole('button', { name: '返却' }));
     expect(screen.getByText('利用可能')).toBeInTheDocument();
+  });
+  test('同じ本を登録することができない', async () => {
+    const bookList = screen.getAllByText('1週間でC#の基礎が学べる本');
+    expect(bookList.length).toBe(1);
   });
   test('削除ボタンを押すと本が削除される', async () => {
     await user.click(screen.getByRole('button', { name: '削除' }));
@@ -49,7 +49,7 @@ describe('本のテーブル', () => {
     await user.type(textboxes[1], 'C');
     expect(screen.getByText('1週間でC#の基礎が学べる本')).toBeInTheDocument();
   });
-  test('フィルターに関係ない値を入力したら何も表示されない', async () => {
+  test('フィルターに関係ない値を入力しても何も表示されない', async () => {
     const textboxes = screen.getAllByRole('textbox');
     await user.type(textboxes[1], 'A');
     expect(
