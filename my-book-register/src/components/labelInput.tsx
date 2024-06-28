@@ -1,12 +1,19 @@
+import { useId } from 'react';
+
 type LabelInputProps = {
+  label: string;
   isbn: string;
   onChangeIsbn: (isbn: string) => void;
 };
-const LabelInput = ({ isbn, onChangeIsbn }: LabelInputProps) => {
+const LabelInput = ({ label, isbn, onChangeIsbn }: LabelInputProps) => {
+  const id = useId();
   return (
     <div className="label-input">
-      <label className="label">ISBNコード</label>
+      <label className="label" htmlFor={id}>
+        {label}
+      </label>
       <input
+        id={id}
         className="input"
         placeholder="入力してください"
         value={isbn}

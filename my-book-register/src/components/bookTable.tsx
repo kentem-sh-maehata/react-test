@@ -22,14 +22,16 @@ const BookTable = ({
           <td>操作</td>
         </tr>
       </thead>
-      {bookItems.map((book) => (
-        <BookRow
-          bookItem={book}
-          onClickDelete={onClickDelete}
-          onClickLendingSwitch={onClickLendingSwitch}
-          key={book.id}
-        />
-      ))}
+      <tbody>
+        {bookItems.map((book) => (
+          <BookRow
+            bookItem={book}
+            onClickDelete={onClickDelete}
+            onClickLendingSwitch={onClickLendingSwitch}
+            key={book.id}
+          />
+        ))}
+      </tbody>
     </table>
   );
 };

@@ -16,7 +16,7 @@ function App() {
     setBooks((prev) => [
       ...prev,
       {
-        id: prev.length.toString(),
+        id: new Date().toString(),
         ...postedItem,
       },
     ]);
@@ -45,8 +45,7 @@ function App() {
               return prev.map((book) => {
                 if (book.id !== id) return book;
                 return {
-                  id: book.id,
-                  name: book.name,
+                  ...book,
                   isOnLoan: !book.isOnLoan,
                 };
               });

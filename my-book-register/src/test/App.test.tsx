@@ -18,16 +18,14 @@ describe('本のテーブル', () => {
     const textboxes = screen.getAllByRole('textbox');
     await user.type(textboxes[0], '9784295007333');
     await user.click(screen.getByRole('button', { name: '書籍登録' }));
-    expect(
-      await screen.findByText('1週間でC#の基礎が学べる本'),
-    ).toBeInTheDocument();
+    await screen.findByText('1週間でC#の基礎が学べる本');
   });
   test('書籍が登録できており、利用可能になっている', async () => {
     expect(screen.getByText('利用可能')).toBeInTheDocument();
   });
   test('貸出ボタンを押すと利用状況が貸出中に切り替わる', async () => {
     await user.click(screen.getByRole('button', { name: '貸出' }));
-    expect(screen.getByText('貸出中'));
+    expect(screen.getByText('貸出中')).toBeInTheDocument();
   });
   test('返却ボタンを押すと利用状況が利用可能に切り替わる', async () => {
     await user.click(screen.getByRole('button', { name: '貸出' }));
@@ -35,6 +33,9 @@ describe('本のテーブル', () => {
     expect(screen.getByText('利用可能')).toBeInTheDocument();
   });
   test('同じ本を登録することができない', async () => {
+    const textboxes = screen.getAllByRole('textbox');
+    await user.type(textboxes[0], '9784295007333');
+    await user.click(screen.getByRole('button', { name: '書籍登録' }));
     const bookList = screen.getAllByText('1週間でC#の基礎が学べる本');
     expect(bookList.length).toBe(1);
   });

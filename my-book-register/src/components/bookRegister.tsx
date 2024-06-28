@@ -36,7 +36,7 @@ const BookRegister = ({ onPostCompleted }: BookRegisterProps) => {
 
   return (
     <div className="book-register">
-      <LabelInput isbn={isbn} onChangeIsbn={onChangeIsbn} />
+      <LabelInput label="ISBNコード" isbn={isbn} onChangeIsbn={onChangeIsbn} />
       <button className="button" onClick={handleClickButton}>
         書籍登録
       </button>
