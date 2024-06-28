@@ -5,6 +5,7 @@
 
 .button {
   background-color: antiquewhite;
+  font-size: 16px;
 }
 
 .label {
@@ -18,11 +19,34 @@
 .label-input {
   display: flex;
 }
+.label-input label {
+  font-size: 18px;
+}
+.label-input input {
+  margin: 0 10px;
+}
 
 .book-register {
   display: flex;
 }
 
 .filterable-book-table {
-  display: flex;
+  gap: 10px;
+}
+.filterable-book-table .label-input {
+  padding: 8px 0;
+}
+.filterable-book-table .label-input input {
+  height: 26px;
+}
+
+.filterable-book-table table {
+  width: 90vw;
+}
+.filterable-book-table thead,
+tr,
+td {
+  text-align: center;
+  padding: 2px 0;
+  font-size: 18px;
 }
