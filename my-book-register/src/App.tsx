@@ -8,6 +8,11 @@ function App() {
   const [books, setBooks] = useState<BookItemModel[]>([]);
 
   const onPostCompleted = (postedItem: Omit<BookItemModel, 'id'>): void => {
+    // 本の登録を重複できないようにする
+    if (books.some((book) => book.name === postedItem.name)) {
+      alert('その本は既に追加されています');
+      return;
+    }
     setBooks((prev) => [
       ...prev,
       {

@@ -20,6 +20,7 @@ const BookRegister = ({ onPostCompleted }: BookRegisterProps) => {
           isOnLoan: false,
         });
       });
+    setIsbn(''); //登録を押したらインプットをクリア
   };
   const onChangeIsbn = (isbn: string): void => setIsbn(isbn);
 

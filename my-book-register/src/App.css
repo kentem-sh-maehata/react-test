@@ -14,6 +14,7 @@
 
 .input {
   height: 25px;
+  font-size: 14px;
 }
 
 .label-input {
@@ -24,29 +25,25 @@
 }
 .label-input input {
   margin: 0 10px;
+  height: 28px;
 }
 
 .book-register {
   display: flex;
 }
 
-.filterable-book-table {
-  gap: 10px;
-}
-.filterable-book-table .label-input {
-  padding: 8px 0;
-}
-.filterable-book-table .label-input input {
-  height: 26px;
-}
-
 .filterable-book-table table {
-  width: 90vw;
+  width: 95vw;
+  margin-top: 12px;
+}
+.filterable-book-table thead tr:nth-child(1) {
+  width: 30%;
+  margin-top: 12px;
 }
 .filterable-book-table thead,
 tr,
 td {
   text-align: center;
-  padding: 2px 0;
+  padding: 1px;
   font-size: 18px;
 }
