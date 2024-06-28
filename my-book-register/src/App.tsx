@@ -28,11 +28,24 @@ function App() {
         onClickDelete={(id) => {
           {
             /* 第2問：貸出 or 返却 or 削除の処理を追加 */
+            setBooks((prev) => {
+              return prev.filter((book) => book.id !== id);
+            });
           }
         }}
         onClickLendingSwitch={(id) => {
           {
             /* 第2問：貸出 or 返却 or 削除の処理を追加 */
+            setBooks((prev) => {
+              return prev.map((book) => {
+                if (book.id !== id) return book;
+                return {
+                  id: book.id,
+                  name: book.name,
+                  isOnLoan: !book.isOnLoan,
+                };
+              });
+            });
           }
         }}
       />
