@@ -8,6 +8,12 @@ type BookRegisterProps = {
 const BookRegister = ({ onPostCompleted }: BookRegisterProps) => {
   const [isbn, setIsbn] = useState('');
   const handleClickButton = (): void => {
+    // ISBNコードが空白の際は登録できないようにする
+    if (!isbn) {
+      alert('ISBNコードを入力してください');
+      return;
+    }
+
     fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`)
       .then((response) => response.json())
       .then((data) => {
@@ -22,7 +28,11 @@ const BookRegister = ({ onPostCompleted }: BookRegisterProps) => {
       });
     setIsbn(''); //登録を押したらインプットをクリア
   };
-  const onChangeIsbn = (isbn: string): void => setIsbn(isbn);
+  const onChangeIsbn = (isbn: string): void => {
+    // 数値以外を入力できないようにする
+    isbn = isbn.replace(/[^0-9]/g, '');
+    setIsbn(isbn);
+  };
 
   return (
     <div className="book-register">
